@@ -21,6 +21,9 @@ palabraIngresada = ""
 def comparadorDePalabras(numero):
     palabraIngresada = str(input("Ingrese una palabra: ")).lower()
 
+    if numero == range(5,8):                                                                    # SI LA OPCION ES TILDES (= RANGE)
+        print(f"La palabra que tenés que averiguar tiene {len(palabraAAdivinar)} letras!")      # 
+
     if palabraIngresada == "chau":
         return "Gracias por jugar! Este es el fin de la partida"
 
@@ -35,18 +38,25 @@ def comparadorDePalabras(numero):
         return "Vamooos fiera adivinaste la palabra!!"
         
 
-    resultado = ""
+    resultado = list(palabraIngresada)
 
-    for i in range(len(palabraIngresada)):
-        if palabraIngresada[i] == palabraAAdivinar[i]:
-            resultado += f"[{palabraIngresada[i]}] "
+    for i in range(len(resultado)):                                #  PRIMERO AVERIGUA
+        if resultado[i] == palabraAAdivinar[i]:                    #  CUALES SON []
+            resultado.pop(i)                                       #  XQ SON DE MAYOR 
+            resultado.insert(i, f"[{palabraIngresada[i]}]")        #  IMPORTANCIA
 
-        elif palabraIngresada[i] in palabraAAdivinar and palabraAAdivinar[:i].count(palabraAAdivinar[i]) < palabraIngresada.count(palabraAAdivinar[i]):
-            resultado += f"|{palabraIngresada[i]}| "
-        else:
-            resultado += f"{palabraIngresada[i]} "
+    for i in range(len(resultado)):                                                                                      # CONDICIONES: 
+        if (resultado[i] in palabraAAdivinar and                                                                         # QUE I ESTE EN LA PALABRA
+           (resultado.count(f"|{palabraIngresada[i]}|") < palabraAAdivinar.count(palabraIngresada[i]) and                # QUE NO HAYA MAS |I| QUE I EN LA PALABRA
+            resultado.count(f"[{palabraIngresada[i]}]") < palabraAAdivinar.count(palabraIngresada[i]))):                 # QUE NO HAYA MAS [I] QUE I EN LA PALABRA
+            
+            resultado.pop(i)                                                                                             
+            resultado.insert(i, f"|{palabraIngresada[i]}|" )                                                             
+            
         
-    return f"{palabraIngresada}\n{resultado}"
+    return " ".join(resultado)
+
+
 
 # falta ver el tema del contador
 
@@ -56,17 +66,12 @@ def finPartida():
 # fin partida muestra un dibujo con ascii cada vez que terminas. depende del puntaje
 
 i = 0
-while i < 5 or palabraIngresada != palabraAAdivinar:
+while i <= 5 and palabraIngresada != palabraAAdivinar:
     print(comparadorDePalabras(cantidadLetras))
-    palabraIngresada = comparadorDePalabras
     print(palabraAAdivinar)
     i += 1
         
-# hay que solucionar el tema de como hacer que salga del bucle por completo. ADEMAS el problema de las letras repetidas sigue:
-# si la letra repetida en pIngresada esta al final de paAdivinar, va a hacer || hasta que llegue al final. o sea, funciona solo si 
-# la letra repetida en cuestion esta al principio, que no siempre es el caso. 
-# deberiamos encontrar la manera de priorizar []. se podria hacer con listas, y que ingrese las letras en los indexes correspondientes.
-# se podria hacer una lista con cada letra sola, y cada letra se va reemplezando por || o []
+# hay que solucionar el tema de como hacer que salga del bucle por completo. 
     
 
 
