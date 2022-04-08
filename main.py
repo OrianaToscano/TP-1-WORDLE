@@ -19,7 +19,7 @@ palabraAAdivinar = dicc.get(random.randint(0, len(dicc)))
 palabraIngresada = ""
 
 def comparadorDePalabras(numero):
-    palabraIngresada = str(input("Ingrese una palabra: ")).lower()
+    palabraIngresada = str(input("Ingrese una palabra\n>>> ")).lower()
 
     if numero == range(5,8):                                                                    # SI LA OPCION ES TILDES (= RANGE)
         print(f"La palabra que tenés que averiguar tiene {len(palabraAAdivinar)} letras!")      # 
@@ -28,10 +28,10 @@ def comparadorDePalabras(numero):
         return "Gracias por jugar! Este es el fin de la partida"
 
     while len(palabraIngresada) != numero:
-        palabraIngresada = str(input("La palabra debe ser de 5 letras! Ingrese otra"))
+        palabraIngresada = str(input("La palabra debe ser de 5 letras! Ingrese otra\n>>> "))
     
     while palabraIngresada not in dicc.values():
-        palabraIngresada = str(input("Papa frita, esa palabra no esta en el diccionario!!"))
+        palabraIngresada = str(input("Papa frita, esa palabra no esta en el diccionario!!\n>>> "))
 
     if palabraIngresada == palabraAAdivinar:
         # el contador se tendria que poner aca xq es el cierre del programa
@@ -55,8 +55,6 @@ def comparadorDePalabras(numero):
             
         
     return " ".join(resultado)
-
-
 
 # falta ver el tema del contador
 
