@@ -4,4 +4,10 @@ class Usuario:
         self.puntaje = 0
         self.racha = 0
 
+
+# Usuarios creados
+
+lol = Usuario("lol")
+lol1 = Usuario("lol1")
+
 listaUsuarios = []
