@@ -1,7 +1,7 @@
 #La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
 Ori
 10
-0
+10
 
 #La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
 Lol1
@@ -10,8 +10,8 @@ Lol1
 
 #La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
 OLOL
-15
-0
+10
+1
 
 #La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
 lol2
@@ -25,10 +25,12 @@ LOL2
 
 #La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
 averr
-0
+10
 0
  
 #La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
 averr2
 0
 0
+ 
+

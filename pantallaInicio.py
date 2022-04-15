@@ -6,17 +6,21 @@ import os
 
 usuarioActual = None
 
+def usuariosCreados():
+        usuariosBase = open("usuariosBaseDeDatos.txt", "r+", 3, "utf-8")
+        lineas = usuariosBase.read().splitlines()
+
+        listaUsuarios = []
+
+        for i in lineas[1::5]:
+            listaUsuarios.append(i)    
+        usuariosBase.close()
+
+        return listaUsuarios
+
 def ingresoUsuario():
-    # ----------- usuarios creados --------------
-
-    usuariosBase = open("usuariosBaseDeDatos.txt", "r+", 3, "utf-8")
-    lineas = usuariosBase.read().splitlines()
-    listaUsuarios = []
-    for i in lineas[1::5]:
-        listaUsuarios.append(i)    
-    usuariosBase.close()
-
-    # -------------------------------------------
+    
+    listaUsuarios = usuariosCreados()
 
     print(f"""Hola! Bienvenidx a WORDLE!! 
 Acá jugamos con un sistema de usuarios para que se guarden tus puntos! 
@@ -31,7 +35,7 @@ Si sos nuevx, fijate de ingresar un nombre que no este en la lista! Sino, bienve
         print("No hay ningun usuario registrado con ese nombre! Bienvenidx!!\n-------------------------------------------------")
         datosUsuario = open(f"usuariosBaseDeDatos.txt", "a+", 3, "utf-8")
         datosUsuario.write("#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha\n")
-        datosUsuario.write(f"{unUsuario}\n0\n0\n")
+        datosUsuario.write(f"{unUsuario}\n0\n0\n \n")
         datosUsuario.close()
     else:
         print(f"\nYa hay un usuario con ese nombre, bienvenidx de vuelta {unUsuario}!!")
@@ -44,10 +48,11 @@ Si sos nuevx, fijate de ingresar un nombre que no este en la lista! Sino, bienve
 
     return usuarioActual
 
+usuarioActual = ingresoUsuario()
+
 #------------------------------------------- SELECCION DE NIVEL -------------------------------------------------
 
 def pantallaDeInicio():
-    ingresoUsuario()
     print(
     """
  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------. 

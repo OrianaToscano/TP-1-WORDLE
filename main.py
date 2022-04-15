@@ -2,7 +2,9 @@ import random
 from pantallaInicio import *
 from usuarios_alternativo import *
 
+
 cantidadLetras = pantallaDeInicio()
+listaUsuarios = usuariosCreados()
 
 # -----------Asignador de diccionarios--------------
 
@@ -21,6 +23,22 @@ elif cantidadLetras == range(5,8):
     dicc = dicc_palabras_tildes
 
 #---------------------------------------------------
+
+def escribirDatosFinales(racha,puntaje):
+    datosUsuario = open(f"usuariosBaseDeDatos.txt", "r+", 3, "utf-8")
+    linea = datosUsuario.readlines()
+    datosUsuario.seek(0)
+    index = linea.index(f"{usuarioActual}\n")
+
+    if int(linea[index+1]) < puntaje:
+        linea[index+1] = f"{puntaje}\n"
+        datosUsuario.writelines( linea )
+
+    if int(linea[index+2]) < racha:
+        linea[index+2] = f"{racha}\n"
+        datosUsuario.writelines( linea )
+        
+    datosUsuario.close()
 
 instrucciones()
 
@@ -97,10 +115,7 @@ def ejecucionUnaPartida():
 
     corteJuego(contadorIntentos, racha, puntaje)
 
-
-
     # fin partida muestra un dibujo con ascii cada vez que terminas. depende del puntaje
-
 
 ejecucionUnaPartida()
 
