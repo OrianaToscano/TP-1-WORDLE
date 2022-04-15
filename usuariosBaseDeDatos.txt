@@ -1,0 +1,107 @@
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+Ori
+15
+10
+
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+Lol1
+68
+0
+
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+OLOL
+10
+1
+
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+lol2
+0
+0
+
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+LOL2
+0
+0
+
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+averr
+15
+1
+ 
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+averr2
+0
+0
+ 
+
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+a
+0
+0
+ 
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+& C:/Users/Claudio/AppData/Local/Programs/Python/Python38/python.exe c:/Users/Claudio/Desktop/TP-1-WORDLE-version-14-4-22/main.py
+0
+0
+ 
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+aveer
+15
+0
+ 
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+Ori
+10
+10
+
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+Lol1
+68
+0
+
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+OLOL
+10
+1
+
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+lol2
+0
+0
+
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+LOL2
+0
+0
+
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+averr
+15
+1
+ 
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+averr2
+0
+0
+ 
+
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+a
+0
+0
+ 
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+& C:/Users/Claudio/AppData/Local/Programs/Python/Python38/python.exe c:/Users/Claudio/Desktop/TP-1-WORDLE-version-14-4-22/main.py
+0
+0
+ 
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+aveer
+15
+1
+ 
+#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha
+& C:/Users/Claudio/AppData/Local/Programs/Python/Python38/python.exe c:/Users/Claudio/Desktop/TP-1-WORDLE-version-14-4-22/main.py
+0
+0
+ 

@@ -1,4 +1,4 @@
-from datosGuardados import *
+
 import time
 import os
 
@@ -6,37 +6,56 @@ import os
 
 usuarioActual = None
 
-print(f"""Hola! Bienvenidx a WORDLE!! Acá jugamos con un sistema de usuarios para que se guarden tus puntos! 
+def usuariosCreados():
+        usuariosBase = open("usuariosBaseDeDatos.txt", "r+", 3, "utf-8")
+        lineas = usuariosBase.read().splitlines()
+
+        listaUsuarios = []
+
+        for i in lineas[1::5]:
+            listaUsuarios.append(i)    
+        usuariosBase.close()
+
+        return listaUsuarios
+
+def ingresoUsuario():
+    
+    listaUsuarios = usuariosCreados()
+
+    print(f"""Hola! Bienvenidx a WORDLE!! 
+Acá jugamos con un sistema de usuarios para que se guarden tus puntos! 
 Estos son los usuarios ya creados:
 --> {listaUsuarios} <--
 Si sos nuevx, fijate de ingresar un nombre que no este en la lista! Sino, bienvenidx otra vez!!
+    -------------------------------------------------""") 
 
--------------------------------------------------""")
-
-def obtenerUsuario():
     unUsuario = str(input("Ingresá tu usuario: "))
 
     if unUsuario not in listaUsuarios:
         print("No hay ningun usuario registrado con ese nombre! Bienvenidx!!\n-------------------------------------------------")
-        user = Usuario(unUsuario)
-        listaUsuarios.append(user.nombre)
+        datosUsuario = open(f"usuariosBaseDeDatos.txt", "a+", 3, "utf-8")
+        datosUsuario.write("#La primera linea será el nombre, la segunda su puntaje acumulado y la tercera su racha\n")
+        datosUsuario.write(f"{unUsuario}\n0\n0\n \n")
+        datosUsuario.close()
+    else:
+        print(f"\nYa hay un usuario con ese nombre, bienvenidx de vuelta {unUsuario}!!")
     
-    # esto se deberia guardar permanentemente en un archivo. esto es solo en ram. habria que abrir el archivo, buscar x texto y agregar lo que sea necesario, o sea user a lista}
-    
-    usuarioActual = user
+    usuarioActual = unUsuario
+
      
+    time.sleep(3)
+    os.system('cls')
+
     return usuarioActual
 
-usuarioActual = obtenerUsuario()
-
-time.sleep(5)
-os.system('cls')
+usuarioActual = ingresoUsuario()
 
 #------------------------------------------- SELECCION DE NIVEL -------------------------------------------------
 
-
-print(
-""" .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------. 
+def pantallaDeInicio():
+    print(
+    """
+ .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------. 
 | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |
 | | _____  _____ | || |     ____     | || |  _______     | || |  ________    | || |   _____      | || |  _________   | |
 | ||_   _||_   _|| || |   .'    `.   | || | |_   __ \    | || | |_   ___ `.  | || |  |_   _|     | || | |_   ___  |  | |
@@ -46,27 +65,47 @@ print(
 | |  |__/  \__|  | || |   `.____.'   | || | |____| |___| | || | |________.'  | || |  |________|  | || | |_________|  | |
 | |              | || |              | || |              | || |              | || |              | || |              | |
 | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
- '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
- 
->> 1. 5 LETRAS
->> 2. 6 LETRAS
->> 3. 7 LETRAS
->> 4. SOLO TILDES!""")
+'----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
+    
+    >> 1. 5 LETRAS
+    >> 2. 6 LETRAS
+    >> 3. 7 LETRAS
+    >> 4. SOLO TILDES
+    >> 5. RANKING
+    >> 6. CERRAR SESION (cambiar el usuario)
+    """)
 
-opcion = int(input("Ingresá el número de opción que quieras jugar!! --> "))
+    opcion = str(input("Ingresá el número de opción que quieras jugar!! --> "))
 
-while opcion < 1 or opcion > 4: 
-    opcion = int(input("Noo las opciones solo son pueden ser 1, 2, 3 o 4!! Volve a intentarlo --> "))
+    while opcion not in "123456": 
+        opcion = str(input("Noo las opciones solo son pueden ser 1, 2, 3 o 4!! Volve a intentarlo --> "))
 
-cantidadLetras = 0
+    cantidadLetras = 0
 
-if opcion == 4:
-    cantidadLetras = range(5,8)
-else:
-    cantidadLetras = opcion+4
+    if int(opcion) == 4:
+        cantidadLetras = range(5,8)
+    else:
+        cantidadLetras = int(opcion) + 4
 
-print(cantidadLetras)
-print("Vamos a jugar!!")
+    
+    print("Vamos a jugar!!")
+    print(cantidadLetras)
 
-time.sleep(5)
-os.system('cls')
+    time.sleep(3)
+    os.system('cls')
+    
+    return cantidadLetras
+
+#------------------------------------------- INSTRUCCIONES -------------------------------------------------
+
+def instrucciones():
+    print("""
+Las instrucciones del juego son las siguientes!
+Vas a tener 6 intentos para intentar averiguar una palabra con una cierta cantidad de letras (vos podes elegir cuantas!). 
+Cuando ingreses una palabra, esta volverá a mostrarse en pantalla con ciertos símbolos, estos son:
+    [ a ] ---> Significa que la letra está en la palabra y en la posición correcta!
+    | a | ---> Significa que la letra está en la palabra, pero no en la posición correcta!
+      a   ---> Significa que la letra NO está en la palabra!
+""")
+
+
