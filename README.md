@@ -9,9 +9,9 @@
   Las palabras de 5 no te dan bonus, la de 6 y 7, 5 y 10 respectivamente. Con tildes se obtiene un bónus de 20 puntos.
   Estos dos se suman y dan la totalidad de puntaje obtenido, si se acertó la palabra en menos de 6 intentos.
   
-- **funciones extra**
+- **Funciones extra**
   -  El programa obtiene las palabras de varias bases de datos convertidas en archivos python, según la cantidad de letras, y si tiene tilde o no. 
   Además hay un diccionario master para que el programa puede tomar cualquier palabra al momento de jugar, y no solo las que cumplen con la condición.
   - Se puede elegir el nivel de dificultad en la pantalla de inicio ( de 5 a 7 letras o con tildes).
-  - Se registra el puntaje ( el más alto?) y el usuario en un archivo .txt, que luego se utiliza para mostrar un rankin. 
+  - Se registra el puntaje más alto y el usuario en un archivo .txt, que luego se utiliza para mostrar un ranking. 
   -Este últipo muestra quién tiene el puntaje más alto, y cuánto es.
