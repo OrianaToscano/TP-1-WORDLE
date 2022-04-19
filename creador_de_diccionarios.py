@@ -5,21 +5,18 @@
 # indexes no consecutivos)
 
 
-import DICCIONARIOS.diccionarios_no_formateados.seis_letras #esta linea se cambia por .cinco_letras // .seis_letras // .siete_letras // tildes
-from DICCIONARIOS.diccionario_master import *
-from DICCIONARIOS.diccionario_seis_letras import *
+import DICCIONARIOS.diccionarios_no_formateados.siete_letras  #esta linea se cambia por .cinco_letras // .seis_letras // .siete_letras // tildes
 
-dicc = dicc_palabras_seis_letras
-# archivo = open("DICCIONARIOS\diccionario_master.py", "a", 3, "utf-8") # idem comentario anterior. Se modifica nombre de archivo
-# archivo.write("dicc_all_palabras = {") # se modifica nombre de dicc
+
+
+dicc = DICCIONARIOS.diccionarios_no_formateados.siete_letras 
+archivo = open("TP 1 WORDLE\DICCIONARIOS\diccionario_siete_letras.py", "w", 3, "utf-8") # idem comentario anterior. Se modifica nombre de archivo
+archivo.write("dicc_palabras_siete_letras = {") # se modifica nombre de dicc
 oracion = ""
-i=0
-n=0
-while len(dicc):
-    valor = list(dicc.values())
-    dicc_all_palabras.extend
-    i+=1
-    n+=1
 
-#archivo.write("}")
-#archivo.close()
+for i in range(len(dicc.listaPalabras)): 
+    valor = list(dicc.listaPalabras[i].values())
+    archivo.write(f"{i}: \"{valor[1]}\", ")
+
+archivo.write("}")
+archivo.close()
