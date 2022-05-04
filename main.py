@@ -1,12 +1,12 @@
 import random
 import os
-from DICCIONARIOS.diccionario_cinco_letras  import *
-from DICCIONARIOS.diccionario_seis_letras import *
-from DICCIONARIOS.diccionario_siete_letras import *
-from DICCIONARIOS.diccionario_master import *
-from DICCIONARIOS.diccionario_tildes import *
-from inicio import *
-from dibujos import *
+from DICCIONARIOS.diccionario_cinco_letras  import dicc_palabras_cinco_letras
+from DICCIONARIOS.diccionario_seis_letras import dicc_palabras_seis_letras
+from DICCIONARIOS.diccionario_siete_letras import dicc_palabras_siete_letras
+from DICCIONARIOS.diccionario_master import dicc_totalidad_palabras
+from DICCIONARIOS.diccionario_tildes import dicc_palabras_tildes
+import inicio
+import dibujos
 
 
 def dificultadJuego(cantidadLetras):
@@ -21,7 +21,7 @@ def dificultadJuego(cantidadLetras):
     if cantidadLetras == 9:
         print(dicc_segun_opcion[9])
         ranking()
-        return dificultadJuego(pantallaDeInicioYDificultad())
+        return dificultadJuego(inicio.pantallaDeInicioYDificultad())
     else:
         dicc = dicc_segun_opcion[cantidadLetras]
         return dicc, cantidadLetras
@@ -54,11 +54,11 @@ def ranking():
 
 #-------------------------------- PARTIDA INDIVIDUAL (1 PALABRA) --------------------------------------#
 
-configuracionActual = dificultadJuego(pantallaDeInicioYDificultad())
+configuracionActual = dificultadJuego(inicio.pantallaDeInicioYDificultad())
 
 if configuracionActual:
 
-    listaUsuarios = usuariosCreados()
+    listaUsuarios = inicio.usuariosCreados()
     puntajeTotal = 0
     rachaTotal = 0
     puntajeMaxAMin = [80,60,40,30,20,10]        #Si 1er intento: 80, 2do: 60, 3ro: 40, etc etc
@@ -66,9 +66,9 @@ if configuracionActual:
 
 
     def finalizacionPartida(puntos):
-        for i in dibujosSegunPuntaje:
+        for i in dibujos.dibujosSegunPuntaje:
             if puntos in i:
-                print(f"{dibujosSegunPuntaje[i]}")
+                print(f"{dibujos.dibujosSegunPuntaje[i]}")
                 if puntos != 0:
                     print(f"  Tu puntaje total es de {puntajeTotal}!! Acabás de sumar {puntos} puntos!")
                 return puntos
@@ -100,17 +100,27 @@ if configuracionActual:
         def corteJuego(intentos, unaRacha):
             print(f"\n >>>> Intento N° {intentos} <<<<")
             palabraIngresada = str(input("Ingrese una palabra\n>>> ")).lower()
-            global puntajeTotal, rachaTotal
+            global puntajeTotal, rachaTotal 
 
             # ------------------ EN CASO DE INGRESAR PALABRAS NO VALIDAS -------------------
-            while len(palabraIngresada) != len(palabraAAdivinar):
-                palabraIngresada = str(input(f"La palabra debe ser de {len(palabraAAdivinar)} letras! Ingrese otra\n>>> "))
-            
-            while cantidadLetras == range(5,8) and palabraIngresada not in dicc_totalidad_palabras.values():     # si es con tildes, chequea que este en diccionario master
-                palabraIngresada = str(input("Papa frita, esa palabra no esta en el diccionario!!\n>>> "))
-            
-            while cantidadLetras != range(5,8) and palabraIngresada not in dicc.values():                        # si NO es con tildes, chequea en el dicc que le corresponde
-                palabraIngresada = str(input("Papa frita, esa palabra no esta en el diccionario!!\n>>> "))
+
+            def condicionesPalabra():
+                condicion1 = True if len(palabraIngresada) != len(palabraAAdivinar) else False
+                condicion2 = True if cantidadLetras == range(5,8) and palabraIngresada not in dicc_totalidad_palabras.values() else False
+                condicion3 = True if cantidadLetras != range(5,8) and palabraIngresada not in dicc.values() else False
+                return condicion1, condicion2, condicion3
+            condiciones = condicionesPalabra()
+
+            while condiciones[0] or condiciones[1] or condiciones[2]:
+                if condiciones[0]:
+                    print(f"La palabra debe ser de {len(palabraAAdivinar)} letras! Ingrese otra")
+                elif condiciones[1] or condiciones[2]:
+                    print("Papa frita, esa palabra no esta en el diccionario!!")
+
+                palabraIngresada = str(input(">>> "))
+                condiciones = condicionesPalabra()
+                
+
             # -------------------------------------------------------------------------------
 
             if palabraIngresada == palabraAAdivinar:
@@ -141,6 +151,7 @@ if configuracionActual:
                 corteJuego(intentos,unaRacha)
                 
         def comparadorDePalabras(palabra):
+
             resultado = list(palabra)
 
             for i in range(len(resultado)):                                #  PRIMERO AVERIGUA
@@ -188,7 +199,7 @@ Opcion ---> """))
 
         elif confirmacion == "2":
             global configuracionActual
-            configuracionActual = dificultadJuego(pantallaDeInicioYDificultad())
+            configuracionActual = dificultadJuego(inicio.pantallaDeInicioYDificultad())
             ejecucionUnaPartida()
 
         elif confirmacion == "3":
@@ -200,7 +211,7 @@ Opcion ---> """))
     def escribirDatosFinales(racha,puntaje):
         datosUsuario = open(f"usuariosBaseDeDatos.txt", "r", 3, "utf-8")
         linea = datosUsuario.readlines()
-        index = linea.index(f"{usuarioActual}\n")
+        index = linea.index(f"{inicio.usuarioActual}\n")
         datosUsuario.close()
 
         datosUsuario = open(f"usuariosBaseDeDatos.txt", "w", 3, "utf-8")
@@ -212,7 +223,7 @@ Opcion ---> """))
         datosUsuario.writelines( linea )
         datosUsuario.close()
 
-    instrucciones()
+    inicio.instrucciones()
     ejecucionUnaPartida()
 
     #-----------------------------------------------------------------------------------------------------------------------#

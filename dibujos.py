@@ -1,7 +1,7 @@
 #Puse pa probar pero obvio desp elejimos juntas
 
 dibujosSegunPuntaje = {
-    range(100,101): f"""
+    range(80,101): f"""
                                  .''.                                              .''. 
        .''.             *''*    :_\/_:     .             .''.             *''*    :_\/_:     . 
       :_\/_:   .    .:.*_\/_*   : /\ :  .'.:.'.         :_\/_:   .    .:.*_\/_*   : /\ :  .'.:.'.
@@ -18,7 +18,7 @@ dibujosSegunPuntaje = {
 
             Tu puntaje literalmente no puede ser mejor, deberiamos hacerte otro nivel!!!""" ,
 
-    range(60,100): f"""
+    range(60,80): f"""
 
                __..--''``\--....___   _..,_
            _.-'    .-/";  `        ``<._  ``-+'~=.
