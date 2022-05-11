@@ -8,6 +8,8 @@ from DICCIONARIOS.diccionario_tildes import *
 from inicio import *
 from dibujos import *
 
+def cls():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def dificultadJuego(cantidadLetras):
     dicc_segun_opcion = {
@@ -46,7 +48,7 @@ def ranking():
         print(f"| {lineas[lineas.index(i)-1]} | _____________{i}______________")
 
     input("\nCuando quieras volver al menu, presiona enter!")
-    os.system('cls')
+    cls()
     
     
 
@@ -181,7 +183,7 @@ Opcion ---> """))
         while confirmacion not in "123":
             confirmacion = str(input("Solo podes ingresar 1, 2 o 3!!"))
 
-        os.system('cls')
+        cls()
 
         if confirmacion == "1":
             ejecucionUnaPartida()
