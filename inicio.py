@@ -3,6 +3,9 @@ import os
 
 #------------------------------------------- INGRESO USUARIO -------------------------------------------------
 
+def cls():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 usuarioActual = None
 
 def usuariosCreados():
@@ -43,7 +46,7 @@ Si sos nuevx, fijate de ingresar un nombre que no este en la lista! Sino, bienve
 
      
     time.sleep(1)
-    os.system('cls')
+    cls()
 
     return usuarioActual
 
@@ -91,7 +94,7 @@ ELEGÍ LA CANTIDAD DE LETRAS CON LAS QUE QUIERAS JUGAR!! (A mayor cantidad, mayo
     print("Vamos a jugar!!")
 
     time.sleep(1)
-    os.system('cls')
+    cls()
     
     return cantidadLetras
 
